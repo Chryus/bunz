@@ -1,3 +1,5 @@
+Sequel::Model.plugin :timestamps
+
 Sequel.migration do
   change do
     create_table(:rabbits) do
@@ -7,8 +9,6 @@ Sequel.migration do
       Integer :age
       String :color
       String :breed
-      DateTime :created_at
-      DateTime :updated_at
     end
   end
 end
