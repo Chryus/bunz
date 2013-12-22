@@ -30,7 +30,7 @@ class App < Sinatra::Application
 
 	#update rabbit handler/route
 	put '/rabbits/:id' do
-		@rabbit = Rabbit.get(params[:id])
+		@rabbit = Rabbit.find(params[:id])
 		if @rabbit.update(params[:rabbit])
 			status 201
 			redirect '/rabbits/' + params[:id]
@@ -42,20 +42,20 @@ class App < Sinatra::Application
 
 	#delete rabbit confirmation handler
 	get '/rabbits/delete/:id' do
-		@rabbit = Rabbit.get(params[:id])
+		@rabbit = Rabbit.find(params[:id])
 		haml :delete
 	end
 
 	#delete rabbit handler
 	delete 'rabbits/:id' do
-		Rabbit.get(params[:id]).destroy
+		Rabbit.find(params[:id]).destroy
 		redirect '/rabbits'
 	end
 
 	#show rabbit
 	get '/rabbits/:id' do
-		@rabbit = Rabbit.get(params[:id])
-		haml :show
-	end
+    @rabbit = Rabbit.find(params[:id])
+    haml :show
+  end
 
 end

@@ -9,6 +9,8 @@ Sequel.migration do
       Integer :age
       String :color
       String :breed
+      DateTime :created_at
+      DateTime :updated_at
     end
   end
 end
