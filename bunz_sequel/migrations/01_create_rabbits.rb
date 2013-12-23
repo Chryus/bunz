@@ -1,4 +1,3 @@
-Sequel::Model.plugin :timestamps
 
 Sequel.migration do
   change do
