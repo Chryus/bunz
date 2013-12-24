@@ -16,7 +16,7 @@ class App < Sinatra::Application
 		haml :new
 	end
 
-	# get '/rabbits/edit' do
+	#get '/rabbits/edit' do
 
 
 	#edit rabbit

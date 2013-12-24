@@ -18,7 +18,7 @@ class App < Sinatra::Application
 		haml :new
 	end
 
-	#edit rabbit
+	#create a new rabbit
 	post '/rabbits' do
 		@rabbit = Rabbit.new(params[:rabbit])
 		if @rabbit.save
@@ -30,12 +30,18 @@ class App < Sinatra::Application
 		end
 	end
 
+	#edit a rabbit
+	get '/rabbits/edit/:id' do
+		@rabbit = Rabbit.get(params[:id])
+		haml :edit
+	end
+
 	#update rabbit handler/route
 	put '/rabbits/:id' do
 		@rabbit = Rabbit.get(params[:id])
 		if @rabbit.update(params[:rabbit])
 			status 201
-			redirect '/rabbits'+ (params[:id])
+			redirect '/rabbits/'+ (params[:id])
 		else
 			status 400
 			haml :edit
