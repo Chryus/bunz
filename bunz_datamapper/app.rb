@@ -60,7 +60,7 @@ class App < Sinatra::Application
 		redirect '/rabbits'
 	end
 
-	#show rabbit
+	#show rabbit #why does this matter so much? the order?
 	get '/rabbits/:id' do
 		@rabbit = Rabbit.get(params[:id])
 		haml :show
