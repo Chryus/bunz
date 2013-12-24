@@ -16,12 +16,15 @@ class App < Sinatra::Application
 		haml :new
 	end
 
+	# get '/rabbits/edit' do
+
+
 	#edit rabbit
 	post '/rabbits' do
 		@rabbit = Rabbit.new(params[:rabbit])
 		if @rabbit.save
 			status 201
-			redirect '/rabbits' + @rabbit.id.to_s
+			redirect '/rabbits/' << @rabbit.id.to_s
 		else
 			status 400
 			haml :new

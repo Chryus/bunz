@@ -23,7 +23,7 @@ class App < Sinatra::Application
 		@rabbit = Rabbit.new(params[:rabbit])
 		if @rabbit.save
 			status 201
-			redirect '/rabbits' + @rabbit.id.to_s
+			redirect '/rabbits/' + @rabbit.id.to_s
 		else
 			status 400
 			haml :new
@@ -35,7 +35,7 @@ class App < Sinatra::Application
 		@rabbit = Rabbit.get(params[:id])
 		if @rabbit.update(params[:rabbit])
 			status 201
-			redirect '/rabbits/' + params[:id]
+			redirect '/rabbits'+ (params[:id])
 		else
 			status 400
 			haml :edit
