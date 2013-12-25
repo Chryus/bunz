@@ -22,4 +22,25 @@ class App < Sinatra::Application
 		haml: new
 	end
 
+	#create a new rabbit
+	post '/rabbits' do
+		@rabbit = Rabbit.new(params[:rabbit])
+		if @rabbit.save
+			status 201
+			redirect '/rabbits/' + @rabbit.id.to_s
+		else
+			status 400
+			haml: new
+		end
+	end
+
+	#edit a rabbit
+	get '/rabbits/edit/:id' do
+		@rabbit = Rabbit.find(params[:id])
+		haml :edit
+	end
+
+
+
+
   
