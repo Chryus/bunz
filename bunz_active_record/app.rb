@@ -9,6 +9,10 @@ class App < Sinatra::Application
     set :root, File.dirname(__FILE__)
     set :views, Proc.new { File.join(root, "views") }
 	end
-end
+
+	get 'rabbits' do
+		@rabbits = Rabbit.all?
+		haml :index
+	end
 
   
