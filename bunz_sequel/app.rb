@@ -16,8 +16,11 @@ class App < Sinatra::Application
 		haml :new
 	end
 
-	#get '/rabbits/edit' do
-
+	#edit a rabbit
+	get '/rabbits/edit/:id' do
+		@rabbit = Rabbit.find(params[:id])
+		haml :edit
+	end
 
 	#edit rabbit
 	post '/rabbits' do
