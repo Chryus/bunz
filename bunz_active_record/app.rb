@@ -10,9 +10,16 @@ class App < Sinatra::Application
     set :views, Proc.new { File.join(root, "views") }
 	end
 
+	#list all rabbits
 	get 'rabbits' do
 		@rabbits = Rabbit.all?
 		haml :index
+	end
+
+	#add new rabbit
+	get '/rabbits/new' do
+		@rabbit = Rabbit.new
+		haml: new
 	end
 
   
