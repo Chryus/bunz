@@ -3,7 +3,7 @@
 
 %label(for="color")Color:
 %select#quantity(name="rabbit[color]")
-- %w[black white grey brown].each do |color| %option{:value => color, :selected => (true if color == @rabbit.color)} = color
+- %w[black white grey brown].each do |color| %option{:value => color, :selected => (true if color == @rabbit.color)}= color
 
 %label(for="description") Description:
 %textarea#description(name="rabbit[description]") = rabbit.description
